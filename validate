@@ -6,6 +6,7 @@ jsonval() {
 }
 
 
+ret=0
 files=`find . -type f | egrep '\.geo\.json$'`
 fail_count=0
 file_count=0
@@ -21,6 +22,7 @@ do
 	then
 		echo "Valid GeoJSON for (" $file ")"
 	else
+		ret=1
 		prop="message"
 		reason=`jsonval`
 		echo "Invalid GeoJSON for (" $file ")"
@@ -30,10 +32,4 @@ do
 done
 
 echo $file_count files checked. $fail_count failures.
-
-if [ "$fail_count" = 0 ]
-then
-	exit 0
-else
-	exit 1
-fi
+exit $ret
