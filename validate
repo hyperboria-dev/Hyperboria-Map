@@ -1,6 +1,7 @@
-#! /bin/bash
-function jsonval {
-    temp=`echo $json | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w $prop`
+#!/bin/sh
+
+jsonval() {
+	temp=`echo $json | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w $prop`
     echo ${temp##*|}
 }
 
@@ -11,27 +12,28 @@ file_count=0
 
 for file in $files
 do
+	file_count=`echo $file_count+1 | bc`
+	json=`curl -X POST --data @$file $data http://geojsonlint.com/validate 2>/dev/null`
+	prop="status"
+	result=`jsonval`
 
-    (( file_count += 1 ))
-    json=$(curl -X POST --data @$file $data http://geojsonlint.com/validate 2>/dev/null)
-    prop="status"
-    result=`jsonval`
-
-    if [ "$result" = "status: ok" ]; then
-        echo "Valid GeoJSON for (" $file ")"
-    else
-	prop="message"
-        reason=`jsonval`
-        echo "Invalid GeoJSON for (" $file ")"
-        echo $reason
-      ((file_count +=1 ))
-    fi
+	if [ "$result" = "status: ok" ]
+	then
+		echo "Valid GeoJSON for (" $file ")"
+	else
+		prop="message"
+		reason=`jsonval`
+		echo "Invalid GeoJSON for (" $file ")"
+		echo $reason
+		file_count=`echo $file_count+1 | bc`
+	fi
 done
 
 echo $file_count files checked. $fail_count failures.
 
-if [ "$fail_count" = 0 ]; then
-    exit 0
+if [ "$fail_count" = 0 ]
+then
+	exit 0
 else
-    exit 1
+	exit 1
 fi
