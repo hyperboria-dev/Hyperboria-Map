@@ -2,6 +2,34 @@
 	"type": "FeatureCollection",
 	"features": [
 		{
+                        "type": "Feature",
+                        "properties": {
+                                "marker-size": "large",
+                                "marker-color": "#2196F3",
+                                "type": "Service",
+                                "Connection": "Ethernet",
+                                "Maintainer": "kylerschin"
+                        },
+                        "geometry": {
+                                "type": "Point",
+                                "coordinates": [-117.822529, 33.650054]
+                        }
+                },
+		{
+                        "type": "Feature",
+                        "properties": {
+                                "marker-size": "small",
+                                "marker-color": "#2196F3",
+                                "type": "Service",
+                                "Connection": "Wireless",
+                                "Maintainer": "kylerschin"
+                        },
+                        "geometry": {
+                                "type": "Point",
+                                "coordinates": [-117.8225316, 33.6500305]
+                        }
+                },
+		{
 			"type": "Feature",
 			"properties": {
 				"marker-size": "large",
@@ -60,6 +88,16 @@
 					[5.93393, 51.9869]
 				]
 			}
-		}
+		}, {
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                                "type": "LineString",
+                                "coordinates": [
+                                        [-117.822529, 33.650054],
+                                        [-117.8225316, 33.6500305]
+                                ]
+                        }
+                }
 	]
 }
