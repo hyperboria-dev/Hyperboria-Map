@@ -48,8 +48,8 @@ If the node is already directly peered with a other node you can add a `LineStri
 
 ### Properties
 The following properties are mandatory. 
-* __type__ _(Either Exchange, Access or Services)_
-* __marker-size__ _(Small for services, medium for Access and large for Exchanges.)_
+* __type__ _(Either Wireless Hotspot, Exchange, Access or Services)_
+* __marker-size__ _(Small for services, medium for Access and large for Exchanges. Excuse is if your service is HUGE. Wireless hotspots are all small.)_
 * __connection__ _(Type of connection medium)_
 * __maintainer__ _(IRC name)_
 
