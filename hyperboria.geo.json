@@ -20,7 +20,7 @@
                         "properties": {
                                 "marker-size": "small",
                                 "marker-color": "#2196F3",
-                                "type": "Service",
+                                "type": "Exchange/Relay",
                                 "Connection": "Wireless",
                                 "Maintainer": "kylerschin"
                         },
