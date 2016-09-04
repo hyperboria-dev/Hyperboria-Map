@@ -18,7 +18,7 @@
 		{
                         "type": "Feature",
                         "properties": {
-                                "marker-size": "small",
+                                "marker-size": "medium",
                                 "marker-color": "#2196F3",
                                 "type": "Exchange/Relay",
                                 "Connection": "Wireless",
@@ -27,6 +27,20 @@
                         "geometry": {
                                 "type": "Point",
                                 "coordinates": [-117.8225316, 33.6500305]
+                        }
+                },
+                {
+                        "type": "Feature",
+                        "properties": {
+                                "marker-size": "small",
+                                "marker-color": "#2196F3",
+                                "type": "Wireless Hotspot",
+                                "Connection": "Wireless",
+                                "Maintainer": "kylerschin"
+                        },
+                        "geometry": {
+                                "type": "Point",
+                                "coordinates": [-117.8225316, 33.6500301]
                         }
                 },
 		{
